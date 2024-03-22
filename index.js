@@ -30,7 +30,7 @@ app.get("/", (req, res) => {
 });
 
 // connectDb();
-let prot = 4000;
-app.listen(prot, () => {
+let prot = 3000;
+app.listen(prot, "0.0.0.0", () => {
   console.log(`server is running on port ${4000}`);
 });

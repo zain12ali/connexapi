@@ -4,15 +4,17 @@ import cors from "cors";
 import bodyParser from "body-parser";
 import admin from "firebase-admin";
 import serviceAccount from "./serviceAccountKey.json" assert { type: "json" };
+import dotenv from "dotenv";
+dotenv.config();
 
 const app = express();
-const corsConfig = {
-  origin: "*",
-  credential: true,
-  methods: ["GET", "POST", "PUT", "DELETE"],
-};
+// const corsConfig = {
+//   origin: "*",
+//   credential: true,
+//   methods: ["GET", "POST", "PUT", "DELETE"],
+// };
 // app.options("", cors(corsConfig));
-app.use(cors(corsConfig));
+app.use(cors());
 // Intialize the firebase-admin project/account
 admin.initializeApp({
   credential: admin.credential.cert(serviceAccount),
@@ -30,7 +32,7 @@ app.get("/", (req, res) => {
 });
 
 // connectDb();
-let prot = 3000;
+let prot = process.env.PORT || 3000;
 app.listen(prot, "0.0.0.0", () => {
-  console.log(`server is running on port ${4000}`);
+  console.log(`server is running on port ${prot}`);
 });

@@ -51,7 +51,10 @@ export const deleteUserController = async (req, res, next) => {
       });
     }
   } catch (error) {
-    console.log(error);
+    res.send({
+      success: false,
+      message: error,
+    });
   }
 };
 

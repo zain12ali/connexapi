@@ -8,13 +8,13 @@ import dotenv from "dotenv";
 dotenv.config();
 
 const app = express();
-// const corsConfig = {
-//   origin: "*",
-//   credential: true,
-//   methods: ["GET", "POST", "PUT", "DELETE"],
-// };
-// app.options("", cors(corsConfig));
-app.use(cors());
+const corsConfig = {
+  origin: "*",
+  credential: true,
+  methods: ["GET", "POST", "PUT", "DELETE"],
+};
+app.options("", cors(corsConfig));
+app.use(cors(corsConfig));
 // Intialize the firebase-admin project/account
 admin.initializeApp({
   credential: admin.credential.cert(serviceAccount),
